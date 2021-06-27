@@ -1,0 +1,6 @@
+﻿{
+    "connectionString": "mongodb+srv://Hassan:6cn9xoBWSJLy3NTZ@cluster0.fezgs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "secret": "DoodlyDooKahaHaiTuAataKiyahaitghekerkedikha",
+    "tokenExpiresIn":"4h",
+    "port":4000
+}
