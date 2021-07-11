@@ -6,8 +6,8 @@ const activityService = require('./activity.service');
 router.get('',getActivities);
 router.get('/all',getAllActivities);
 router.post('', createActivity);
-router.put('/:id', updateActivity);
-router.delete('/:id', deleteActivity);
+router.put('/', updateActivity);
+router.delete('/', deleteActivity);
 
 function createActivity(req, res, next) {
     req.body.userId = req.userId;
@@ -18,15 +18,17 @@ function createActivity(req, res, next) {
 
 
 function updateActivity(req, res, next) {
-    activityService.updateActivity(req.userId,req.params.id, req.body)
+    activityService.updateActivity(req.userId,req.body.id, req.body.body)
         .then((data) => res.json(data))
         .catch(err => next(err));
 }
 
 function deleteActivity(req,res,next){
-    activityService.deleteActivity(req.userId,req.params.id).then((data)=>{res.json(data)}).catch(err=>next(err))
+    console.log("DELETE = ",req.query);
+    activityService.deleteActivity(req.query.userId,req.query.id).then((data)=>{res.json(data)}).catch(err=>next(err))
 }
 function getActivities(req,res,next){
+    console.log(req.query);
     activityService.getActivity(req.query.userId,req.query.startDate,req.query.endDate).then((data)=>{res.json(data)}).catch(err=>next(err))
 }
 function getAllActivities(req,res,next){

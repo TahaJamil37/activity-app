@@ -3,15 +3,17 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const User = db.User;
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
     authenticate,
     create,
     update,
     getById,
+    googleauth
 
 };
-async function getById(id){
+async function getById(id) {
     const user = await User.findById(id);
     return user
 }
@@ -23,6 +25,30 @@ async function authenticate({ userName, password }) {
             ...user.toJSON(),
             token
         };
+    }
+}
+async function googleauth(userParam) {
+  
+    const user = await User.findOne({ userName: userParam.userName });
+    if (user) {
+        const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: config.tokenExpiresIn });
+        return {
+            ...user.toJSON(),
+            token
+        };
+    }
+    else {
+        const userpassword = uuidv4()
+        const user = new User(userParam);
+        user.hash = bcrypt.hashSync(userpassword, 10);
+        const newuser=  await user.save();
+        console.log(newuser)
+        const token = jwt.sign({ sub: newuser.id }, config.secret, { expiresIn: config.tokenExpiresIn });
+        return {
+            ...newuser.toJSON(),
+            token
+        };
+
     }
 }
 

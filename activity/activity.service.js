@@ -12,15 +12,16 @@ async function createActivity(params) {
     return savedActivity;
 }
 async function updateActivity(userId, id, params) {
-    const activity = await Activity.findById(_id);
-    if(activity.userId === userId){
-    return await Activity.findOneAndUpdate({id}, { $set: params}, {new:true});
+    const activity = await Activity.findById(id);
+    if(activity.userId == userId){
+        const result = await Activity.findOneAndUpdate(id, { $set: params}, {new:true});
+        return result;
     }
     throw "Not Allowed!"
 }
 async function deleteActivity(userId,_id){
     const activity = await Activity.findById(_id);
-    if(activity.userId === userId){
+    if(activity.userId == userId){
         return await Activity.deleteOne({ _id });
     }
     throw "Not Allowed!"
