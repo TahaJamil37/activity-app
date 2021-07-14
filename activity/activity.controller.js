@@ -24,11 +24,9 @@ function updateActivity(req, res, next) {
 }
 
 function deleteActivity(req,res,next){
-    console.log("DELETE = ",req.query);
     activityService.deleteActivity(req.query.userId,req.query.id).then((data)=>{res.json(data)}).catch(err=>next(err))
 }
 function getActivities(req,res,next){
-    console.log(req.query);
     activityService.getActivity(req.query.userId,req.query.startDate,req.query.endDate).then((data)=>{res.json(data)}).catch(err=>next(err))
 }
 function getAllActivities(req,res,next){

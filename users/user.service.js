@@ -28,7 +28,7 @@ async function authenticate({ userName, password }) {
     }
 }
 async function googleauth(userParam) {
-  
+    
     const user = await User.findOne({ userName: userParam.userName });
     if (user) {
         const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: config.tokenExpiresIn });
@@ -42,7 +42,6 @@ async function googleauth(userParam) {
         const user = new User(userParam);
         user.hash = bcrypt.hashSync(userpassword, 10);
         const newuser=  await user.save();
-        console.log(newuser)
         const token = jwt.sign({ sub: newuser.id }, config.secret, { expiresIn: config.tokenExpiresIn });
         return {
             ...newuser.toJSON(),

@@ -6,7 +6,7 @@ const User = db.User
 async function createActivity(params) {
     const activity = new Activity(params);
     let savedActivity = await activity.save();
-    const user = await User.findOneAndUpdate({_id:params.userId},{$push:{
+    await User.findOneAndUpdate({_id:params.userId},{$push:{
         activites:savedActivity._id
     }});
     return savedActivity;
@@ -14,7 +14,7 @@ async function createActivity(params) {
 async function updateActivity(userId, id, params) {
     const activity = await Activity.findById(id);
     if(activity.userId == userId){
-        const result = await Activity.findOneAndUpdate(id, { $set: params}, {new:true});
+        const result = await Activity.findOneAndUpdate({_id: id}, { $set: params}, {new:true});
         return result;
     }
     throw "Not Allowed!"
@@ -27,10 +27,8 @@ async function deleteActivity(userId,_id){
     throw "Not Allowed!"
 }
 async function getActivity(userId,startDate,endDate) {
-    console.log(startDate, endDate);
     let _start = new Date(new Date(startDate).setHours(0o0, 0o0, 0o0));
-    let _end = new Date(new Date(endDate).setHours(23, 59, 59));
-    console.log(_start.toString(), _end.toString());
+    let _end = new Date(new Date(endDate).setHours(23, 59, 59));    
     let Activities = await Activity.find({
         date: {
             $gte: _start,
