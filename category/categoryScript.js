@@ -26,7 +26,7 @@ controller
           {
             title: "Love and Belonging",
             color: "#FFAF2F",
-            subCategories: ["FriendShip", "Family", "Intimacy", "Connections"],
+            subCategories: ["Friendship", "Family", "Intimacy", "Connection"],
           },
           {
             title: "Safety",
