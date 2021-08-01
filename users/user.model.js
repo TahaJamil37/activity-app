@@ -10,6 +10,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     userName: { type: String, unique: true, required: true },
+    email: { type: String, unique: true, required: false },
     hash: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },

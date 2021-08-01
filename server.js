@@ -26,7 +26,7 @@ app.use(errorHandler);
 
 // start server
 //process.env.PORT : This will be useds when we are deploying it to hroku...if you rin it locally, 
-const port = process.env.PORT || 4000;
+ const port = process.env.PORT || 4000;;
 const server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });

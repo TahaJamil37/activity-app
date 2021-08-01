@@ -18,7 +18,10 @@ async function getById(id) {
     return user
 }
 async function authenticate({ userName, password }) {
-    const user = await User.findOne({ userName });
+    let user = await User.findOne({ userName });
+    if (!user) {
+        user = await User.findOne({ email: userName });
+    }
     if (user && bcrypt.compareSync(password, user.hash)) {
         const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: config.tokenExpiresIn });
         return {
@@ -56,7 +59,6 @@ async function create(userParam) {
     if (await User.findOne({ userName: userParam.userName })) {
         throw 'userName "' + userParam.userName + '" is already taken';
     }
-
     const user = new User(userParam);
 
     // hash password
