@@ -58,7 +58,6 @@ async function getActivityGrouped(userId, start, end) {
   // ]
   // )
   // let Activities = await Activity.find({});
-    console.log(Activities);
   return Activities;
 }
 

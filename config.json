@@ -2,5 +2,13 @@
     "connectionString": "mongodb+srv://Hassan:6cn9xoBWSJLy3NTZ@cluster0.fezgs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     "secret": "DoodlyDooKahaHaiTuAataKiyahaitghekerkedikha",
     "tokenExpiresIn":"4h",
-    "port":4000
+    "port":4000,
+    "service": "gmail",
+    "user": "dailyreflectpyramid@gmail.com",
+    "password": "dailybzylaq010",
+    "client_id": "196316263359-co1khmc1vl8eqbimrsa5mrs9s59criq5.apps.googleusercontent.com",
+    "client_secret": "VEvkxIPZzvKUKEZa07cMmDjl",
+    "redirect_url": "https://developers.google.com/oauthplayground",
+    "refresh_token": "1//041wjx5qSLF4XCgYIARAAGAQSNwF-L9Ir-L5BYXo40T6w63oJzrp670gIMt8XVFr44NfxNgA6b7Sbzw-awGI_VhMtm830Jp_Sd5k",
+    "access_token": "ya29.a0ARrdaM-Bgw0xMOwmgd8_ps6crP5XijtObks8MgYf3auyEVS-kQLJRlVFQTadZZcWISEtCkFUVh2CkZEeolXV6p2nasGGyQCiHhpSn2aPSUeBSU1nk7AwwZF57YzvN9nkoGq3t78xxeDmsXqvYn8P9XBAE7Dl"
 }
